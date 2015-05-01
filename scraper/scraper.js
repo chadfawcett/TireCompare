@@ -14,7 +14,7 @@ request(url, function(error, response, html) {
 
     var count = 0
     $('.article-image-single').each(function(index, element) {
-      if (index % 2 !== 0 && count < 1) {
+      if (index % 2 !== 0) {
         var tire = json.tires[count] = {}
 
         var imageElement = $(element).children('.gallery-link').children('img')
@@ -40,7 +40,12 @@ request(url, function(error, response, html) {
       }
     })
 
-    console.log(JSON.stringify(json, null, 2));
+    fs.writeFile(__dirname + '/output.json', JSON.stringify(json, null, 2), function(err) {
+      if (!err)
+        console.log('File succesfully written!')
+      else
+        console.log('There was an error writing the file')
+    })
   } else {
     console.log('There was an error requesting the page source.')
   }
