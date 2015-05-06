@@ -30,12 +30,12 @@ request(url, function(error, response, html) {
         //  Hacky way to get the description string. For some reason I couldn't go past the br with next()
         tire.description = descriptionElement.find('br')[0].next.data.replace(/(\r\n|\n|\r)/gm, '')
 
-        tire.ratings = {}
+        tire.ratings = []
         ratingElement.find('strong').each(function(i, category) {
           var cat = $(category).text().replace(/(:)/gm, '').toLowerCase()
           var val = $(category)[0].next.data.match(/(\*)/g).length
 
-          tire.ratings[cat] = val
+          tire.ratings.push({'class': cat, 'stars': val})
         })
 
         count++
