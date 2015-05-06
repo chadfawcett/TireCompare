@@ -17,6 +17,8 @@ request(url, function(error, response, html) {
       if (index % 2 !== 0) {
         var tire = json.tires[count] = {}
 
+        tire.id = Math.floor(index / 2) + 1;
+
         var imageElement = $(element).children('.gallery-link').children('img')
         var descriptionElement = $(element).next()
         var ratingElement = $(element).next().next().next()
