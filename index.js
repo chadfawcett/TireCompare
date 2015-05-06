@@ -6,4 +6,5 @@ angular.module('tire.compare', ['ngResource'])
   })
   .controller('TireController', function($scope, TireResource) {
     $scope.tires = TireResource.query()
+    $scope.range = new Array(4)
   })
