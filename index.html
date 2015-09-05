@@ -10,7 +10,15 @@
   </head>
   <body ng-app="tire.compare">
     <div ng-controller="TireController">
-      <div ng-repeat="tire in tires">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1"><br>
+          <div ng-repeat="rating in searchParams.ratings track by $index">
+            {{ rating.class }}:<input type="text" name="rating.class" ng-model="rating.minStars"><br><br>
+          </div>
+        </div>
+      </div>
+
+      <div ng-repeat="tire in tires | filter: tireFilter">
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1">
             <div class="panel panel-default">
